@@ -1,0 +1,4 @@
+com\snack\facades\ProductFacadeTest.class
+com\snack\repositories\ProductRepositoryTest.class
+com\snack\services\ProductServiceTest.class
+com\snack\applications\ProductApplicationTest.class
