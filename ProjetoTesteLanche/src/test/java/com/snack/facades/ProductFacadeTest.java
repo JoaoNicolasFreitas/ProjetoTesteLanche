@@ -72,10 +72,15 @@ public class ProductFacadeTest {
     public void deveRemoverProdutoExistente() {
         productFacade.append(produtoXBurguer);
 
+        Path pathImagem = Paths.get(String.format("src\\test\\java\\com\\snack\\imagesBox\\%d.jpg", produtoXBurguer.getId()));
+        Assertions.assertTrue(Files.exists(pathImagem), "A imagem deveria existir após adicionar o produto");
+
+        Assertions.assertTrue(productFacade.exists(10), "O produto deveria existir antes de ser removido");
+
         productFacade.remove(10);
 
-        Assertions.assertFalse(productFacade.exists(10));
-        Path path = Paths.get(produtoXBurguer.getImage());
-        Assertions.assertFalse(Files.exists(path));
+        Assertions.assertFalse(productFacade.exists(10), "O produto deveria ser removido");
+        
+        Assertions.assertFalse(Files.exists(pathImagem), "A imagem deveria ser removida após remover o produto");
     }
 }
